@@ -151,29 +151,118 @@ void distribuiVendasNosCaixas(int temposDeEntrada[], int tamanhoEntrada, int cai
     printf("\n");
   }
 
+  FILE *arq;
+  arq = fopen("resultadoDistribuicao.txt", "w");
+
+  for(int i = 0; i < tamanhoEntrada; i++){
+    for(int j = 0; j < caixas; j++){
+      fprintf(arq, "%d\t", registrosCaixas[i][j]);
+    }
+    fprintf(arq, "\n");
+  }
+  fclose(arq);
+}
+
+void totalVendasPorCaixa(int tamanho, int caixas) {
+  FILE *arqResultado, *arqEntradas;
+  arqEntradas = fopen("6EntradasTeste.txt", "r");
+  arqResultado = fopen("resultadoDistribuicao.txt", "r");
+
+  int entradas[tamanho][5];
+  int resultados[tamanho][caixas];
+
+  int id, qntde, preco, tempo, pagamento;
+  for (int i = 0; i < tamanho; i++){
+    fscanf(arqEntradas, "%d %d %d %d %d", &id, &qntde, &preco, &tempo, &pagamento);
+    entradas[i][0] = id;
+    entradas[i][1] = qntde;
+    entradas[i][2] = preco;
+    entradas[i][3] = tempo;
+    entradas[i][4] = pagamento;
+  }
+  int valor;
+  for (int i = 0; i < tamanho; i++){
+    for(int j = 0; j < caixas; j++){
+      fscanf(arqResultado, "%d ", &valor);
+      resultados[i][j] = valor;
+    }
+  }
+
+  int vendasPorCaixas[caixas];
+  for (int i = 0; i < caixas; i++) vendasPorCaixas[i] = 0;
+
+  int indice, precoEntrada;
+  for(int j = 0; j < caixas; j++){
+    for(int i = 0; i < tamanho; i++){
+      if (resultados[i][j] != -1 ){
+        indice = resultados[i][j];
+        precoEntrada = entradas[indice][2];
+        vendasPorCaixas[j] += precoEntrada;
+      }
+    }
+  }
+
+  printf("\nVendas por caixa: \n");
+  for (int i = 0; i < caixas; i++) {
+    printf("Caixa %d: %d sanquinhas\n", i+1, vendasPorCaixas[i]);
+  };
+
+  fclose(arqResultado);
+  fclose(arqEntradas);
+}
+
+void tempoMedioPorCaixa(int tamanho, int caixas){
+  FILE *arqResultado, *arqEntradas;
+  arqEntradas = fopen("6EntradasTeste.txt", "r");
+  arqResultado = fopen("resultadoDistribuicao.txt", "r");
+
+  int entradas[tamanho][5];
+  int resultados[tamanho][caixas];
+
+  int id, qntde, preco, tempo, pagamento;
+  for (int i = 0; i < tamanho; i++){
+    fscanf(arqEntradas, "%d %d %d %d %d", &id, &qntde, &preco, &tempo, &pagamento);
+    entradas[i][0] = id;
+    entradas[i][1] = qntde;
+    entradas[i][2] = preco;
+    entradas[i][3] = tempo;
+    entradas[i][4] = pagamento;
+  }
+  int valor;
+  for (int i = 0; i < tamanho; i++){
+    for(int j = 0; j < caixas; j++){
+      fscanf(arqResultado, "%d ", &valor);
+      resultados[i][j] = valor;
+    }
+  }
+
+  int tempoPorCaixas[caixas];
+  for (int i = 0; i < caixas; i++) tempoPorCaixas[i] = 0;
+
+  int indice, tempoEntrada;
+  for(int j = 0; j < caixas; j++){
+    for(int i = 0; i < tamanho; i++){
+      if (resultados[i][j] != -1 ){
+        indice = resultados[i][j];
+        tempoEntrada = entradas[indice][3];
+        tempoPorCaixas[j] += tempoEntrada;
+      }
+    }
+  }
+
+  printf("\nTempos por caixa: \n");
+  for (int i = 0; i < caixas; i++) {
+    printf("Caixa %d: %d unidades de tempo\n", i+1, tempoPorCaixas[i]);
+  };
+
+  fclose(arqResultado);
+  fclose(arqEntradas);
 }
 
 void main() {
-  int caixas = 3, tamanhoEntrada = 6;
+  int caixas = 4, tamanhoEntrada = 6;
   int temposRegistrados[] = {10, 10, 10, 4, 4, 4};
-  // int tamanho = 6;
-  // int tamanhoVetor = sizeof(tempos)/sizeof(tempos[0]);
-
-  // int auxiliarTempos[caixas];
-
-  // inicializaCaixas(auxiliarTempos, caixas);
-
-
-  // printf("tamanho vetor: %d\n", tamanhoVetor);
-
-  // subtraiTempos(tempos, 2, tamanhoVetor);
-
-  // int disponivel = caixaDisponivel(tempos, caixas);
-
-  // printf("\ncaixa disponivel? %d", disponivel);
-
-  // for(int i = 0; i < caixas; i++){
-  //   printf("\nindice %d: %d", i, auxiliarTempos[i]);
-  // }
   distribuiVendasNosCaixas(temposRegistrados, tamanhoEntrada, caixas);
+  totalVendasPorCaixa(6, 4);
+  tempoMedioPorCaixa(6, 4);
 }

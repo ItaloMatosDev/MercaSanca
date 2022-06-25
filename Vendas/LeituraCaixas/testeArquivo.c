@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 int main(void)
 {
   FILE *pont_arq; // cria variável ponteiro para o arquivo

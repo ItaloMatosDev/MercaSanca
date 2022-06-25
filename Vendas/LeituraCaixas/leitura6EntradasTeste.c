@@ -29,14 +29,16 @@ void main() {
   while(!feof(arq)){
     // le cada item do arquivo txt como inteiro
     fscanf(arq, "%d %d %d %d %d", &id, &quantidade, &preco, &tempo, &pagamento);
-    printf("%d %d %d %d %d\n", id, quantidade, preco, tempo, pagamento);
-    printf("\ntempo: %d\n", tempo);
+    // printf("%d %d %d %d %d\n", id, quantidade, preco, tempo, pagamento);
     quantidades[i] = quantidade;
     precos[i] = preco;
     tempos[i] = tempo;
-    printf("\ntempos[%d]: %d\n", i, tempos[i]);
     pagamentos[i] = pagamento;
     i++;
+  }
+
+  for(int i = 0; i < 6; i++){
+    printf("%d\n", tempos[i]);
   }
   
   fclose(arq);
