@@ -4,7 +4,7 @@
 
 void main() {
 
-  int caixas = 4, tamanhoEntrada = 30;
+  int caixas = 4, tamanhoEntrada = 100;
   int temposRegistrados[tamanhoEntrada];
 
   FILE *arqEntradas;
@@ -13,12 +13,7 @@ void main() {
   int id, qntde, preco, tempo, pagamento;
   for (int i = 0; i < tamanhoEntrada; i++){
     fscanf(arqEntradas, "%d %d %d %d %d", &id, &qntde, &preco, &tempo, &pagamento);
-    printf("tempo: %d\n", tempo);
     temposRegistrados[i] = tempo;
-  }
-
-  for(int i = 0; i < tamanhoEntrada; i++){
-    printf("%d ", temposRegistrados[i]);
   }
 
   distribuiVendasNosCaixas(temposRegistrados, tamanhoEntrada, caixas);
