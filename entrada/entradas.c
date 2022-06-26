@@ -5,9 +5,11 @@
 
 //método de pagamento 
 void metod_pag (int n, int **mp){
-    
     // printf("dentro da funcao");
     for (int i = 0; i < n; i++){
+        
+        // por que j < 1   ??
+
         for (int j = 0; j < 1; j++){
             mp[i][j] = rand () % 3;
             // printf("dentro do for\n");
@@ -17,9 +19,7 @@ void metod_pag (int n, int **mp){
         printf ("\n");
     }
     printf ("\n");
-    
 }
-
 
 int main () {
 
@@ -58,19 +58,19 @@ int main () {
     metod_pag(n, mp);
     
     //valor total
-    for (int i = 0; i < n; i++){
-        for (int j = 0; j < 1; j++){
-        totvalue = totvalue + sale [i][j];
-;        }
-    }
-    printf ("Valor Total: %d ", totvalue);
-    printf ("\n");
+//     for (int i = 0; i < n; i++){
+//         for (int j = 0; j < 1; j++){
+//         totvalue = totvalue + sale [i][j];
+// ;        }
+//     }
+//     printf ("Valor Total: %d ", totvalue);
+//     printf ("\n");
     
     
     //itens totais
     for (int i = 0; i < n; i++){
         for (int j = 0; j < 1; j++){
-        totitens = totitens + sale [i][1];
+            totitens = totitens + sale [i][1];
         }
     }
     printf ("Itens Totais: %d ", totitens);
