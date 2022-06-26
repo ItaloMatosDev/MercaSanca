@@ -2,26 +2,22 @@
 #include <stdlib.h>
 #include <time.h>
 
-// int metodoPagamento(){
-//   srand(time(NULL));
-
-//   int valor; 
-//   valor = rand() % 10;
-//   printf("%d ", valor);
-//   return valor;
-// }
-
 void gerarEntradas(int qtdEntradas){
+  FILE *arquivoEntradas;
+  arquivoEntradas = fopen("arquivoEntradas.txt", "w");
+  if (arquivoEntradas == NULL){
+    printf("Nao ha arquivo de entradas para analisar");
+  }
+
   int entradas[qtdEntradas][5];
   srand(time(NULL));
   int id, itens, preco, tempo, pagamento;
   for(int i = 0; i < qtdEntradas; i++){
-    id = rand() % 10*qtdEntradas + 1;
-    itens = rand() % 5*qtdEntradas + 1;
-    preco = rand() % 10*qtdEntradas + 1;
-    tempo = rand() % 10*qtdEntradas + 1;
-    pagamento = rand() % 3;
-    entradas[i][0] = id;
+    itens = rand() % 100 + 1;
+    preco = rand() % (10*qtdEntradas);
+    tempo = rand() % (itens * 2) + 2;
+    pagamento = rand() % 4;
+    entradas[i][0] = i;
     entradas[i][1] = itens;
     entradas[i][2] = preco;
     entradas[i][3] = tempo;
@@ -30,12 +26,17 @@ void gerarEntradas(int qtdEntradas){
 
   for (int i = 0; i < qtdEntradas; i++){
     for (int j = 0; j < 5; j++){
-      printf("%d\t\t", entradas[i][j]);
+      printf("%d ", entradas[i][j]);
+      fprintf(arquivoEntradas, "%d ", entradas[i][j]);
     }
     printf("\n");
+    fprintf(arquivoEntradas, "\n");
   }
+
+  fclose(arquivoEntradas);
+
 }
 
 int main () {
-  gerarEntradas(10);
+  gerarEntradas(100);
 }
