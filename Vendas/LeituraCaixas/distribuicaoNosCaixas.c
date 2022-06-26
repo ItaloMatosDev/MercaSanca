@@ -92,11 +92,11 @@ int indiceTempoAtual(int indice) {
 
 void distribuiVendasNosCaixas(int temposDeEntrada[], int tamanhoEntrada, int caixas) {
   int auxiliarTempos[caixas];
-  int registrosCaixas[10][caixas];
+  int registrosCaixas[tamanhoEntrada][caixas];
   // cada caixa pode ter ate 10 vendas, deve armazenar indice da venda
 
   // popula matriz com todos os valores sendo -1
-  for (int i = 0; i < 10; i++){
+  for (int i = 0; i < tamanhoEntrada; i++){
     for(int j = 0; j < caixas; j++){
       registrosCaixas[i][j] = -1;
     }
@@ -126,7 +126,7 @@ void distribuiVendasNosCaixas(int temposDeEntrada[], int tamanhoEntrada, int cai
       // }
       // printf("\n");
 
-      for(int i = 0; i < 10; i++){
+      for(int i = 0; i < tamanhoEntrada; i++){
         if(registrosCaixas[i][menorCaixaDisponivel] == -1) {
           registrosCaixas[i][menorCaixaDisponivel] = contador;
           break;
@@ -285,8 +285,8 @@ void vendasPorMetodoDePagamento(int tamanho, int caixas) {
   printf("\n\nTotal de vendas efetuadas de acordo com o metodo de pagamento:");
   printf("\nPix: %d", metodosPagamentos[0]);
   printf("\nDebito: %d", metodosPagamentos[1]);
-  printf("\nCredito: %d", metodosPagamentos[3]);
-  printf("\nDinheiro: %d", metodosPagamentos[2]);
+  printf("\nCredito: %d", metodosPagamentos[2]);
+  printf("\nDinheiro: %d", metodosPagamentos[3]);
 }
 
 void metodoPagamentoMaisUtilizado(int tamanho, int caixas){
