@@ -284,8 +284,8 @@ void vendasPorMetodoDePagamento(int tamanho, int caixas) {
   }
   printf("\n\nTotal de vendas efetuadas de acordo com o metodo de pagamento:");
   printf("\nPix: %d", metodosPagamentos[0]);
-  printf("\nCartão: %d", metodosPagamentos[1]);
-  printf("\nBitcoin: %d", metodosPagamentos[3]);
+  printf("\nDebito: %d", metodosPagamentos[1]);
+  printf("\nCredito: %d", metodosPagamentos[3]);
   printf("\nDinheiro: %d", metodosPagamentos[2]);
 }
 
@@ -331,15 +331,15 @@ void metodoPagamentoMaisUtilizado(int tamanho, int caixas){
         break;
 
       case 1:
-        printf("\nCartão: %d", totalPagamentos[i]);
+        printf("\nDebito: %d", totalPagamentos[i]);
         break;
 
       case 2:
-        printf("\nDinheiro: %d", totalPagamentos[i]);
+        printf("\nCredito: %d", totalPagamentos[i]);
         break;
 
       case 3:
-        printf("\nBitcoin: %d", totalPagamentos[i]);
+        printf("\nDinheiro: %d", totalPagamentos[i]);
         break;
       default:
         break;
@@ -348,12 +348,12 @@ void metodoPagamentoMaisUtilizado(int tamanho, int caixas){
   }
 }
 
-// void main() {
-//   int caixas = 4, tamanhoEntrada = 6;
-//   int temposRegistrados[] = {10, 10, 10, 4, 4, 4};
-//   distribuiVendasNosCaixas(temposRegistrados, tamanhoEntrada, caixas);
-//   totalVendasPorCaixa(6, 4);
-//   tempoMedioPorCaixa(6, 4);
-//   vendasPorMetodoDePagamento(6, 4);
-//   metodoPagamentoMaisUtilizado(6, 4);
-// }
+void main() {
+  int caixas = 4, tamanhoEntrada = 6;
+  int temposRegistrados[] = {10, 10, 10, 4, 4, 4};
+  distribuiVendasNosCaixas(temposRegistrados, tamanhoEntrada, caixas);
+  totalVendasPorCaixa(6, 4);
+  tempoMedioPorCaixa(6, 4);
+  vendasPorMetodoDePagamento(6, 4);
+  metodoPagamentoMaisUtilizado(6, 4);
+}
