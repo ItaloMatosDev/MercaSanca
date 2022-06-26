@@ -109,22 +109,22 @@ void distribuiVendasNosCaixas(int temposDeEntrada[], int tamanhoEntrada, int cai
 
   while(contador <  tamanhoEntrada){
 
-    printf("\nvalor do proximo: %d\n", prox);
-    
+    // printf("\nvalor do proximo: %d\n", prox);
+
     if (caixaDisponivel(auxiliarTempos, caixas)){
       int menorCaixaDisponivel = buscaMenorTempoRetornaIndice(auxiliarTempos, caixas);
 
-      printf("caixa disponivel no indice: %d\n", menorCaixaDisponivel);
+      // printf("caixa disponivel no indice: %d\n", menorCaixaDisponivel);
       // preciso guardar a informacao de que o indice 0 dos tempos de entrada foi para o caixa 0
       // posso guardar isso numa matriz
 
       atualizaVetorTempos(auxiliarTempos, menorCaixaDisponivel, prox);
 
-      printf("valores atuais de tempo\n");
-      for(int i = 0; i < caixas; i++){
-        printf("%d ", auxiliarTempos[i]);
-      }
-      printf("\n");
+      // printf("valores atuais de tempo\n");
+      // for(int i = 0; i < caixas; i++){
+      //   printf("%d ", auxiliarTempos[i]);
+      // }
+      // printf("\n");
 
       for(int i = 0; i < 10; i++){
         if(registrosCaixas[i][menorCaixaDisponivel] == -1) {
@@ -138,18 +138,18 @@ void distribuiVendasNosCaixas(int temposDeEntrada[], int tamanhoEntrada, int cai
 
     }
     else {
-      printf("sem caixa disponivel\n");
+      // printf("sem caixa disponivel\n");
       subtraiTempos(auxiliarTempos, prox, caixas);
     }
   }
 
   printf("\n");
-  for(int i = 0; i < tamanhoEntrada; i++){
-    for(int j = 0; j < caixas; j++){
-      printf("%d ", registrosCaixas[i][j]);
-    }
-    printf("\n");
-  }
+  // for(int i = 0; i < tamanhoEntrada; i++){
+  //   for(int j = 0; j < caixas; j++){
+  //     printf("%d ", registrosCaixas[i][j]);
+  //   }
+  //   printf("\n");
+  // }
 
   FILE *arq;
   arq = fopen("resultadoDistribuicao.txt", "w");
@@ -348,12 +348,12 @@ void metodoPagamentoMaisUtilizado(int tamanho, int caixas){
   }
 }
 
-void main() {
-  int caixas = 4, tamanhoEntrada = 6;
-  int temposRegistrados[] = {10, 10, 10, 4, 4, 4};
-  distribuiVendasNosCaixas(temposRegistrados, tamanhoEntrada, caixas);
-  totalVendasPorCaixa(6, 4);
-  tempoMedioPorCaixa(6, 4);
-  vendasPorMetodoDePagamento(6, 4);
-  metodoPagamentoMaisUtilizado(6, 4);
-}
+// void main() {
+//   int caixas = 4, tamanhoEntrada = 6;
+//   int temposRegistrados[] = {10, 10, 10, 4, 4, 4};
+//   distribuiVendasNosCaixas(temposRegistrados, tamanhoEntrada, caixas);
+//   totalVendasPorCaixa(6, 4);
+//   tempoMedioPorCaixa(6, 4);
+//   vendasPorMetodoDePagamento(6, 4);
+//   metodoPagamentoMaisUtilizado(6, 4);
+// }
