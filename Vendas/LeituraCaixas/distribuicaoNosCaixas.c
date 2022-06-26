@@ -259,10 +259,101 @@ void tempoMedioPorCaixa(int tamanho, int caixas){
   fclose(arqEntradas);
 }
 
-void main() {
-  int caixas = 4, tamanhoEntrada = 6;
-  int temposRegistrados[] = {10, 10, 10, 4, 4, 4};
-  distribuiVendasNosCaixas(temposRegistrados, tamanhoEntrada, caixas);
-  totalVendasPorCaixa(6, 4);
-  tempoMedioPorCaixa(6, 4);
+void vendasPorMetodoDePagamento(int tamanho, int caixas) {
+  FILE *arqResultado, *arqEntradas;
+  arqEntradas = fopen("6EntradasTeste.txt", "r");
+  int entradas[tamanho][5];
+  int resultados[tamanho][caixas];
+
+  int id, qntde, preco, tempo, pagamento;
+  for (int i = 0; i < tamanho; i++){
+    fscanf(arqEntradas, "%d %d %d %d %d", &id, &qntde, &preco, &tempo, &pagamento);
+    entradas[i][0] = id;
+    entradas[i][1] = qntde;
+    entradas[i][2] = preco;
+    entradas[i][3] = tempo;
+    entradas[i][4] = pagamento;
+  }
+
+  int metodosPagamentos[4] = {0, 0, 0, 0};
+  int indiceMetodo;
+
+  for (int i = 0; i < tamanho; i++){
+    indiceMetodo = entradas[i][4];
+    metodosPagamentos[indiceMetodo] += 1;
+  }
+  printf("\n\nTotal de vendas efetuadas de acordo com o metodo de pagamento:");
+  printf("\nPix: %d", metodosPagamentos[0]);
+  printf("\nCartão: %d", metodosPagamentos[1]);
+  printf("\nBitcoin: %d", metodosPagamentos[3]);
+  printf("\nDinheiro: %d", metodosPagamentos[2]);
 }
+
+void metodoPagamentoMaisUtilizado(int tamanho, int caixas){
+  FILE *arqResultado, *arqEntradas;
+  arqEntradas = fopen("6EntradasTeste.txt", "r");
+  int entradas[tamanho][5];
+  int resultados[tamanho][caixas];
+
+  int id, qntde, preco, tempo, pagamento;
+  for (int i = 0; i < tamanho; i++){
+    fscanf(arqEntradas, "%d %d %d %d %d", &id, &qntde, &preco, &tempo, &pagamento);
+    entradas[i][0] = id;
+    entradas[i][1] = qntde;
+    entradas[i][2] = preco;
+    entradas[i][3] = tempo;
+    entradas[i][4] = pagamento;
+  }
+  int totalPagamentos[4] = {0, 0, 0, 0};
+  int indiceMetodo;
+
+  for (int i = 0; i < tamanho; i++){
+    indiceMetodo = entradas[i][4];
+    totalPagamentos[indiceMetodo] += 1;
+  }
+
+  // guarda qual metodo de pagamento foi mais utilizado (total)
+  int maior = totalPagamentos[0];
+  for(int i = 0; i < caixas; i++){
+    if (totalPagamentos[i] > maior)
+      maior = totalPagamentos[i];
+  }
+
+  printf("\n\nO(s) metodo(s) de pagamento mais utilizado(s): ");
+  for(int i = 0; i < caixas; i++){
+
+    // printf("\nindice: %d \tmaior: %d", totalPagamentos[i], maior);
+    if(totalPagamentos[i] == maior){
+      switch (i)
+      {
+      case 0:
+        printf("\nPix: %d", totalPagamentos[i]);
+        break;
+
+      case 1:
+        printf("\nCartão: %d", totalPagamentos[i]);
+        break;
+
+      case 2:
+        printf("\nDinheiro: %d", totalPagamentos[i]);
+        break;
+
+      case 3:
+        printf("\nBitcoin: %d", totalPagamentos[i]);
+        break;
+      default:
+        break;
+      }
+    }
+  }
+}
+
+// void main() {
+//   int caixas = 4, tamanhoEntrada = 6;
+//   int temposRegistrados[] = {10, 10, 10, 4, 4, 4};
+//   distribuiVendasNosCaixas(temposRegistrados, tamanhoEntrada, caixas);
+//   totalVendasPorCaixa(6, 4);
+//   tempoMedioPorCaixa(6, 4);
+//   vendasPorMetodoDePagamento(6, 4);
+//   metodoPagamentoMaisUtilizado(6, 4);
+// }
