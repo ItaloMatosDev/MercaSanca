@@ -115,12 +115,47 @@ else if(resposta == 2)
 
 }
 
+void loginInicial() {
+    int resposta, loginn;
+    char temp;
 
-// int main(){
+printf("------Bem vindo!------\n");
+printf("pressione: \n");
+printf("0 - encerrar\n");
+printf("1 - cadastro\n");
+printf("2 - login\n");
+printf("deseja fazer cadastro ou login? ");
+scanf("%d", &resposta);
+scanf("%c", &temp);
 
-//teladelogin();
+if(resposta == 1)
+    cadastro();
+else if(resposta == 2)
+    loginn = login();
+else    
+    return;
+
+    while(resposta != 0 && loginn != 1){
+        printf("deseja fazer cadastro ou login? ");
+        scanf("%d", &resposta);
+        scanf("%c", &temp);
+
+        if(resposta == 1)
+            cadastro();
+        else if(resposta == 2){
+            loginn = login();
+        }
+    }
+
+}
 
 
 
-//     return 0;
-// }
+ /*int main(){
+
+loginInicial();
+
+
+
+     return 0;
+ }*/
