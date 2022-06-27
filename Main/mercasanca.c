@@ -7,7 +7,7 @@
 int main(){
     int resposta;
 
-   loginInicial();
+    login();
 
     printf("\n\n---------- TELA INICIAL MERCASANCA 2022 ------------\n");
     printf("Pressione: \n");
@@ -36,7 +36,7 @@ int main(){
     printf("3 - registrar vendas\n");
     printf("4 - gerar relatorios\n");
     printf("0 - sair\n");
-    printf("Insira aqui: \n");
+    printf("Insira aqui: ");
     scanf("%d", &resposta);
     printf("----------------------------------------------------\n");
 

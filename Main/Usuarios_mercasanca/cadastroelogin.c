@@ -74,9 +74,11 @@ int x = 0;
         }
     }
 
-    if(x==0)
+    if(x==0){
         printf("houve algum erro, confira se seu email e senha estao corretos\n");
-
+        login();
+        printf("okokok\n");
+    }
     fclose(arqlogin);
 
     return x;
@@ -133,7 +135,7 @@ if(resposta == 1)
 else if(resposta == 2)
     loginn = login();
 else    
-    return;
+    exit(0);
 
     while(resposta != 0 && loginn != 1){
         printf("deseja fazer cadastro ou login? ");
