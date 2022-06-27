@@ -2,6 +2,17 @@
 #include <stdlib.h>
 #include "../Vendas/LeituraCaixas/distribuicaoNosCaixas.c"
 
+void opcoes(){
+  printf("\n\n-------------------------------------------------\n\n");
+  printf("Escolha uma das opcoes abaixo para gerar relatorio:\n\n");
+  printf("1 - Todos\n");
+  printf("2 - Total de faturamento por caixa\n");
+  printf("3 - Tempo total gasto por caixa\n");
+  printf("4 - Total de vendas por metodo de pagamento\n");
+  printf("5 - Metodo de pagamento mais utilizado\n");
+  printf("0 - Voltar para a tela anterior\n");
+}
+
 void relatorios(){
   int caixas = 4, tamanhoEntrada = 100, opcao;
   int temposRegistrados[tamanhoEntrada];
@@ -14,43 +25,37 @@ void relatorios(){
     fscanf(arqEntradas, "%d %d %d %d %d", &id, &qntde, &preco, &tempo, &pagamento);
     temposRegistrados[i] = tempo;
   }
-  printf("\n\n-------------------------------------------------\n\n");
-  printf("Escolha uma das opcoes abaixo para gerar relatorio:\n\n");
-  printf("1 - Todos\n\n");
-  printf("2 - Total de faturamento por caixa\n\n");
-  printf("3 - Tempo total gasto por caixa\n\n");
-  printf("4 - Total de vendas por metodo de pagamento\n\n");
-  printf("5 - Metodo de pagamento mais utilizado\n\n");
+  opcoes();
   scanf("%d", &opcao);
 
-  switch (opcao)
-  {
-  case 1:
-    distribuiVendasNosCaixas(temposRegistrados, tamanhoEntrada, caixas);
-    totalVendasPorCaixa(tamanhoEntrada, caixas);
-    tempoMedioPorCaixa(tamanhoEntrada, caixas);
-    vendasPorMetodoDePagamento(tamanhoEntrada, caixas);
-    metodoPagamentoMaisUtilizado(tamanhoEntrada, caixas);
-    break;
-  case 2:
-    totalVendasPorCaixa(tamanhoEntrada, caixas);
-    break;
-  case 3:
-    tempoMedioPorCaixa(tamanhoEntrada, caixas);
-    break;
-  case 4:
-    vendasPorMetodoDePagamento(tamanhoEntrada, caixas);
-    break;
-  case 5:
-    metodoPagamentoMaisUtilizado(tamanhoEntrada, caixas);
-    break;
-  default:
-    break;
+  while (opcao != 0){
+    switch (opcao)
+    {
+      case 1:
+        distribuiVendasNosCaixas(temposRegistrados, tamanhoEntrada, caixas);
+        totalVendasPorCaixa(tamanhoEntrada, caixas);
+        tempoMedioPorCaixa(tamanhoEntrada, caixas);
+        vendasPorMetodoDePagamento(tamanhoEntrada, caixas);
+        metodoPagamentoMaisUtilizado(tamanhoEntrada, caixas);
+        break;
+      case 2:
+        totalVendasPorCaixa(tamanhoEntrada, caixas);
+        break;
+      case 3:
+        tempoMedioPorCaixa(tamanhoEntrada, caixas);
+        break;
+      case 4:
+        vendasPorMetodoDePagamento(tamanhoEntrada, caixas);
+        break;
+      case 5:
+        metodoPagamentoMaisUtilizado(tamanhoEntrada, caixas);
+        break;
+      default:
+        break;
+    }
+    opcoes();
+    scanf("%d", &opcao);
   }
 
   fclose(arqEntradas);
-}
-
-int main(){
-  relatorios();
 }
