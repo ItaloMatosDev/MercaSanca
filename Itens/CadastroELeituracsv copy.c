@@ -29,6 +29,17 @@ void cadastro_de_produtos(){
         printf("Erro, confira se o excel nao esta aberto simultaneamente");
         exit(0);
     }
+<<<<<<< Updated upstream
+=======
+    FILE *itens;
+
+    itens = fopen("quantidadadePorItem.csv", "a"); 
+
+    if(itens == NULL){
+        printf("erro ao executar o arquivo");
+        exit(0);
+    }
+>>>>>>> Stashed changes
 
     while(!feof(cadastro)){  
         fscanf(cadastro, "%d;", &id_produto_lido[i]);
@@ -74,6 +85,11 @@ void cadastro_de_produtos(){
         fprintf(cadastro, "%d;%s;%.2f\n", id_produto[i], nome_produto[i], preco_unitario[i]);
     }
 
+<<<<<<< Updated upstream
+=======
+    
+    fclose(itens);
+>>>>>>> Stashed changes
     fclose(cadastro);
 }
 
@@ -171,8 +187,44 @@ void registro_de_vendas(){
     }
 
     printf("quantidade total de produtos vendidos: %d\n", quantidadetotal);
+<<<<<<< Updated upstream
     printf("preco total arrecadado na venda: %.2f", precototal);
 
+=======
+    printf("preco total arrecadado na venda: %.2f\n", precototal);
+
+    FILE *itens;
+
+    itens = fopen("quantidadadePorItem.csv", "r"); //arquivo com o id do prod e a quantidade geral vendida dele
+    //fprintf(itens, "oi");
+
+    if(itens == NULL){
+        printf("erro ao executar o arquivo");
+        exit(0);
+    }
+
+    for(int i=0; i<count; i++){
+        fscanf(itens, "%d;%d\n", &iditem[i], &qteitem[i]);
+        printf("%d    %d\n", iditem[i], qteitem[i]);
+            for(int z=0; z<j; z++){
+                if(indice[z] == i)
+                    qteitem[i] += preco[i]/preco_unitario_lido[i];
+            }
+    }
+
+    fclose(itens);
+    fopen("quantidadadePorItem.csv", "w");
+    //fprintf(itens, "oi");
+
+    if(itens == NULL){
+        printf("erro ao executar o arquivo");
+        exit(0);
+    }
+
+    for(int i=0; i<count; i++)
+        fprintf(itens, "%d;%d\n", iditem[i], qteitem[i]); //adicionando as novas quantidades
+    fclose(itens);
+>>>>>>> Stashed changes
 
 
 }
