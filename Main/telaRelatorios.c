@@ -50,7 +50,3 @@ void relatorios(){
 
   fclose(arqEntradas);
 }
-
-int main(){
-  relatorios();
-}
