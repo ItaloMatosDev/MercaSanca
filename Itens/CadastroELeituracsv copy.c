@@ -125,7 +125,7 @@ void leitura_base_de_dados(){
 void registro_de_vendas(){
     int id, quantidade, quantidade_produto[numero_maximo_de_produtos], i, id_produto_lido[numero_maximo_de_produtos], count = 0, indice[numero_maximo_de_produtos];
     char nome_produto_lido[numero_maximo_de_produtos][20];
-    int iditem[numero_maximo_de_produtos], qteitem[numero_maximo_de_produtos];
+    int iditem[numero_maximo_de_produtos], qteitem[numero_maximo_de_produtos], tempototaldevenda, pagamentoutilizado;
     float preco_unitario_lido[numero_maximo_de_produtos],  preco[numero_maximo_de_produtos];
 
     FILE *cadastro ;
@@ -147,8 +147,9 @@ void registro_de_vendas(){
     }
 
     fclose(cadastro);
+        printf("Bem vindo ao registro de venda! Pressione 0 a qualquer momento para encerrar\n");
 
-        printf("Registro de ID: ");
+        printf("Id do produto: ");
         scanf("%d", &id);
         printf("quantidade: ");
         scanf("%d", &quantidade);
@@ -169,13 +170,24 @@ void registro_de_vendas(){
                 break;
             }
         } 
-        printf("Registro de ID: ");
+        printf("ID do produto: ");
         scanf("%d", &id);
         printf("quantidade: ");
         scanf("%d", &quantidade);
     }
+    
+    printf("Tempo total de venda: ");
+    scanf("%d", &tempototaldevenda);
+    printf("Qual foi o metodo de pagamento?\n");
+    printf("Pressione: \n");
+    printf("0 - Pix\n");
+    printf("1 - Cartao de Debito\n");
+    printf("2 - Cartao de Credito\n");
+    printf("3 - Dinheiro\n");
+    printf("Insira aqui: ");
+    scanf("%d", &pagamentoutilizado);
 
-    printf("vendemos os produtos: \n");
+    /*printf("vendemos os produtos: \n");
 
     for(i=0; i<j; i++){
         int x = indice[i];
@@ -183,7 +195,7 @@ void registro_de_vendas(){
     }
 
     printf("quantidade total de produtos vendidos: %d\n", quantidadetotal);
-    printf("preco total arrecadado na venda: %.2f\n", precototal);
+    printf("preco total arrecadado na venda: %.2f\n", precototal);*/
 
     FILE *itens;
 
@@ -226,9 +238,9 @@ int main(){
 // recomendo usar uma funcao de cada vez pra n dar ruim - so remover o //
 
 
-cadastro_de_produtos(); 
+//cadastro_de_produtos(); 
 //leitura_base_de_dados();
-//registro_de_vendas();
+registro_de_vendas();
 
 
     return 0;
