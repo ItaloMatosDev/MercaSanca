@@ -18,7 +18,7 @@
 
 void cadastro_de_produtos(){
     int id_produto[limite_por_registro], id_produto_lido[numero_maximo_de_produtos], i =0, x, y, count = 0, conferir;
-    char nome_produto[limite_por_registro][20], nome_produto_lido[numero_maximo_de_produtos][20], temp;
+    char nome_produto[limite_por_registro][40], nome_produto_lido[numero_maximo_de_produtos][40], temp;
     float preco_unitario[limite_por_registro], preco_unitario_lido[numero_maximo_de_produtos];
 
     FILE *cadastro ;
@@ -40,7 +40,7 @@ void cadastro_de_produtos(){
 
     while(!feof(cadastro)){  
         fscanf(cadastro, "%d;", &id_produto_lido[i]);
-        fscanf(cadastro, "%20[^;];", nome_produto_lido[i]);
+        fscanf(cadastro, "%40[^;];", nome_produto_lido[i]);
         fscanf(cadastro, "%f\n", &preco_unitario_lido[i]);
         count++;
         i++;
@@ -53,7 +53,7 @@ void cadastro_de_produtos(){
         scanf("%c", &temp);     
         
         printf("Nome do produto: ");
-        scanf("%20[^\n]", nome_produto[i]);
+        scanf("%40[^\n]", nome_produto[i]);
     
 
         printf("preco individual: ");
@@ -88,43 +88,9 @@ void cadastro_de_produtos(){
     fclose(cadastro);
 }
 
-
-
- //    Essa funcao vai receber toda a base de dados do arquivo e armazenar em vetores, que poderao    //
-//  ser usados posteriormente para a elaboracao dos relatorios                                       //
-
-void leitura_base_de_dados(){
-    int id_produto_lido[numero_maximo_de_produtos], i;
-    char nome_produto_lido[numero_maximo_de_produtos][20];
-    float preco_unitario_lido[numero_maximo_de_produtos];
-
-    FILE *cadastro ;
-
-    cadastro = fopen("cadastrodeitens.csv", "r");
-
-    if(cadastro == NULL){
-        printf("erro");
-        exit(0);
-    }
-
-    i = 0;
-    while(!feof(cadastro)){  
-        fscanf(cadastro, "%d;", &id_produto_lido[i]);
-        fscanf(cadastro, "%20[^;];", nome_produto_lido[i]);
-        fscanf(cadastro, "%f\n", &preco_unitario_lido[i]);
-
-        fprintf(stdout, "%d %s  R$%.2f\n", id_produto_lido[i], nome_produto_lido[i], preco_unitario_lido[i]);
-        i++;
-        
-    }
-
-    fclose(cadastro);
-
-}
-
 void registro_de_vendas(int *quantidadetotal, int *precototal, int *pagamentoutilizado){
     int id, quantidade, quantidade_produto[numero_maximo_de_produtos], i, id_produto_lido[numero_maximo_de_produtos], count = 0, indice[numero_maximo_de_produtos];
-    char nome_produto_lido[numero_maximo_de_produtos][20];
+    char nome_produto_lido[numero_maximo_de_produtos][40];
     int iditem[numero_maximo_de_produtos], qteitem[numero_maximo_de_produtos];
     float preco_unitario_lido[numero_maximo_de_produtos],  preco[numero_maximo_de_produtos];
 
@@ -140,7 +106,7 @@ void registro_de_vendas(int *quantidadetotal, int *precototal, int *pagamentouti
     i = 0;
     while(!feof(cadastro)){  
         fscanf(cadastro, "%d;", &id_produto_lido[i]);
-        fscanf(cadastro, "%20[^;];", nome_produto_lido[i]);
+        fscanf(cadastro, "%40[^;];", nome_produto_lido[i]);
         fscanf(cadastro, "%f\n", &preco_unitario_lido[i]);
         count++;
         i++;
@@ -237,7 +203,6 @@ void registro_de_vendas(int *quantidadetotal, int *precototal, int *pagamentouti
 
 
 //cadastro_de_produtos(); 
-//leitura_base_de_dados();
 //registro_de_vendas();
 
 
