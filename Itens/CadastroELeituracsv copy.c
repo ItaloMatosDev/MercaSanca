@@ -29,6 +29,14 @@ void cadastro_de_produtos(){
         printf("Erro, confira se o excel nao esta aberto simultaneamente");
         exit(0);
     }
+    FILE *itens;
+
+    itens = fopen("quantidadadePorItem.csv", "a"); 
+
+    if(itens == NULL){
+        printf("erro ao executar o arquivo");
+        exit(0);
+    }
 
     while(!feof(cadastro)){  
         fscanf(cadastro, "%d;", &id_produto_lido[i]);
@@ -72,8 +80,11 @@ void cadastro_de_produtos(){
          break;
         }
         fprintf(cadastro, "%d;%s;%.2f\n", id_produto[i], nome_produto[i], preco_unitario[i]);
+        fprintf(itens, "%d;%d", id_produto[i], 0);
     }
 
+    
+    fclose(itens);
     fclose(cadastro);
 }
 
@@ -114,6 +125,7 @@ void leitura_base_de_dados(){
 void registro_de_vendas(){
     int id, quantidade, quantidade_produto[numero_maximo_de_produtos], i, id_produto_lido[numero_maximo_de_produtos], count = 0, indice[numero_maximo_de_produtos];
     char nome_produto_lido[numero_maximo_de_produtos][20];
+    int iditem[numero_maximo_de_produtos], qteitem[numero_maximo_de_produtos];
     float preco_unitario_lido[numero_maximo_de_produtos],  preco[numero_maximo_de_produtos];
 
     FILE *cadastro ;
@@ -171,8 +183,39 @@ void registro_de_vendas(){
     }
 
     printf("quantidade total de produtos vendidos: %d\n", quantidadetotal);
-    printf("preco total arrecadado na venda: %.2f", precototal);
+    printf("preco total arrecadado na venda: %.2f\n", precototal);
 
+    FILE *itens;
+
+    itens = fopen("quantidadadePorItem.csv", "r"); //arquivo com o id do prod e a quantidade geral vendida dele
+    //fprintf(itens, "oi");
+
+    if(itens == NULL){
+        printf("erro ao executar o arquivo");
+        exit(0);
+    }
+
+    for(int i=0; i<count; i++){
+        fscanf(itens, "%d;%d\n", &iditem[i], &qteitem[i]);
+        //printf("%d    %d\n", iditem[i], qteitem[i]);
+            for(int z=0; z<j; z++){
+                if(indice[z] == i)
+                    qteitem[i] += preco[i]/preco_unitario_lido[i];
+            }
+    }
+
+    fclose(itens);
+    fopen("quantidadadePorItem.csv", "w");
+    //fprintf(itens, "oi");
+
+    if(itens == NULL){
+        printf("erro ao executar o arquivo");
+        exit(0);
+    }
+
+    for(int i=0; i<count; i++)
+        fprintf(itens, "%d;%d\n", iditem[i], qteitem[i]); //adicionando as novas quantidades
+    fclose(itens);
 
 
 }
@@ -183,9 +226,9 @@ int main(){
 // recomendo usar uma funcao de cada vez pra n dar ruim - so remover o //
 
 
-//cadastro_de_produtos(); 
+cadastro_de_produtos(); 
 //leitura_base_de_dados();
-registro_de_vendas();
+//registro_de_vendas();
 
 
     return 0;
