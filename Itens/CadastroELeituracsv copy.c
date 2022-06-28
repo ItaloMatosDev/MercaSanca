@@ -80,7 +80,7 @@ void cadastro_de_produtos(){
          break;
         }
         fprintf(cadastro, "%d;%s;%.2f\n", id_produto[i], nome_produto[i], preco_unitario[i]);
-        fprintf(itens, "%d;%d", id_produto[i], 0);
+        fprintf(itens, "%d;0\n", id_produto[i]);
     }
 
     
@@ -122,10 +122,10 @@ void leitura_base_de_dados(){
 
 }
 
-void registro_de_vendas(){
+void registro_de_vendas(int *quantidadetotal, int *precototal, int *pagamentoutilizado){
     int id, quantidade, quantidade_produto[numero_maximo_de_produtos], i, id_produto_lido[numero_maximo_de_produtos], count = 0, indice[numero_maximo_de_produtos];
     char nome_produto_lido[numero_maximo_de_produtos][20];
-    int iditem[numero_maximo_de_produtos], qteitem[numero_maximo_de_produtos], tempototaldevenda, pagamentoutilizado;
+    int iditem[numero_maximo_de_produtos], qteitem[numero_maximo_de_produtos];
     float preco_unitario_lido[numero_maximo_de_produtos],  preco[numero_maximo_de_produtos];
 
     FILE *cadastro ;
@@ -155,8 +155,8 @@ void registro_de_vendas(){
         scanf("%d", &quantidade);
 
         int j = 0;
-        int quantidadetotal = 0;
-        float precototal = 0;
+        *quantidadetotal = 0;
+        *precototal = 0;
         
     while(id != 0){
         for(i = 0; i<count; i++){
@@ -164,8 +164,8 @@ void registro_de_vendas(){
                 indice[j] = i;
                 quantidade_produto[i] = quantidade;
                 preco[i] = preco_unitario_lido[i] * quantidade;
-                precototal += preco[i];
-                quantidadetotal += quantidade;
+                *precototal += preco[i];
+                *quantidadetotal += quantidade;
                 j++;
                 break;
             }
@@ -176,8 +176,6 @@ void registro_de_vendas(){
         scanf("%d", &quantidade);
     }
     
-    printf("Tempo total de venda: ");
-    scanf("%d", &tempototaldevenda);
     printf("Qual foi o metodo de pagamento?\n");
     printf("Pressione: \n");
     printf("0 - Pix\n");
@@ -185,7 +183,7 @@ void registro_de_vendas(){
     printf("2 - Cartao de Credito\n");
     printf("3 - Dinheiro\n");
     printf("Insira aqui: ");
-    scanf("%d", &pagamentoutilizado);
+    scanf("%d", pagamentoutilizado);
 
     /*printf("vendemos os produtos: \n");
 
@@ -233,15 +231,15 @@ void registro_de_vendas(){
 }
 
 
-int main(){
+/*int main(){
 
 // recomendo usar uma funcao de cada vez pra n dar ruim - so remover o //
 
 
 //cadastro_de_produtos(); 
 //leitura_base_de_dados();
-registro_de_vendas();
+//registro_de_vendas();
 
 
     return 0;
-}
+}*/

@@ -3,6 +3,7 @@
 #include <string.h>
 #include "../Usuarios_mercasanca/cadastroelogin.c"
 #include "./telaRelatorios.c"
+#include "..\Main\Entradamanual.c"
 
 int main(){
     int resposta;
@@ -26,6 +27,12 @@ int main(){
         switch(resposta){
             case 1: 
                 teladelogin();
+                break;
+            case 2:
+                cadastro_de_produtos();
+                break;
+            case 3: 
+                gerarEntradas(numero_maximo_de_produtos);
                 break;
             case 4: 
                 relatorios();
