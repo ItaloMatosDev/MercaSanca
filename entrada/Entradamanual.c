@@ -5,7 +5,7 @@
 
 void gerarEntradas(int qtdEntradas){
   FILE *arquivoEntradas;
-  arquivoEntradas = fopen("registrodevendas.txt", "a+");
+  arquivoEntradas = fopen("../entrada/registrodevendas.txt", "a+");
   if (arquivoEntradas == NULL){
     printf("Nao ha arquivo de entradas para analisar");
   }
@@ -38,6 +38,3 @@ void gerarEntradas(int qtdEntradas){
 
 }
 
-int main () {
-  gerarEntradas(100);
-}

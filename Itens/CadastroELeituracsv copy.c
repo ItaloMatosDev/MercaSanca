@@ -37,7 +37,9 @@ void cadastro_de_produtos(){
         printf("erro ao executar o arquivo");
         exit(0);
     }
-
+    
+    printf("\n-------- Cadastro de Produtos --------\n");
+    printf("insira 0 no id ou no preco para finalizar\n");
     while(!feof(cadastro)){  
         fscanf(cadastro, "%d;", &id_produto_lido[i]);
         fscanf(cadastro, "%40[^;];", nome_produto_lido[i]);
@@ -113,7 +115,8 @@ void registro_de_vendas(int *quantidadetotal, int *precototal, int *pagamentouti
     }
 
     fclose(cadastro);
-        printf("Bem vindo ao registro de venda! Pressione 0 a qualquer momento para encerrar\n");
+        printf("\n---------- REGISTRO DE VENDA ------------\n");
+        printf("Bem vindo ao registro de venda! Pressione 0 a qualquer momento no id para encerrar\n");
 
         printf("Id do produto: ");
         scanf("%d", &id);
@@ -150,6 +153,7 @@ void registro_de_vendas(int *quantidadetotal, int *precototal, int *pagamentouti
     printf("3 - Dinheiro\n");
     printf("Insira aqui: ");
     scanf("%d", pagamentoutilizado);
+    printf("\nObrigado! Retornando para a tela inicial... \n");
 
     /*printf("vendemos os produtos: \n");
 

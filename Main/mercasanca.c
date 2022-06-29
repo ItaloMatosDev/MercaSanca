@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../Usuarios_mercasanca/cadastroelogin.c"
+#include "../Main/Usuarios_mercasanca\cadastroelogin.c"
 #include "./telaRelatorios.c"
-#include "..\Main\Entradamanual.c"
+#include "..\entrada\Entradamanual.c"
 
 
 int main(){
     int resposta;
 
-    printf("--------------Bem vindo!-----------------\n");
+    printf("--------------------Bem vindo!----------------------\n");
     while(login() == 0)
         printf("");
         

@@ -16,7 +16,7 @@ void cadastro(){
     }
 
 
-    printf("------ CADASTRO ------\n\n");
+    printf("\n---------- CADASTRO ----------\n");
     printf("Insira o nome: ");
     scanf("%100[^\n]", nomedousuario);
     printf("Insira o email: ");
@@ -57,7 +57,7 @@ int login(){
         i++;
     }
 
-    printf("------ LOGIN ------\n\n");
+    printf("\n----------- LOGIN -----------\n");
     printf("Insira seu email: ");
     scanf("%s", emaillogin);
     printf("Insira sua senha: ");
@@ -87,7 +87,7 @@ void teladelogin(){
     int resposta, loginn;
     char temp;
 
-printf("------ TROCAR DE PERFIL ------\n\n");
+printf("\n------ TROCAR DE PERFIL ------\n");
 printf("pressione: \n");
 printf("0 - voltar\n");
 printf("1 - cadastro\n");
@@ -102,7 +102,7 @@ else if(resposta == 2)
     loginn = login();
 
     while(resposta != 0 && loginn != 1){
-        printf("------ TROCAR DE PERFIL ------\n\n");
+        printf("\n------ TROCAR DE PERFIL ------\n");
         printf("pressione: \n");
         printf("0 - voltar\n");
         printf("1 - cadastro\n");
