@@ -5,12 +5,15 @@
 #include "./telaRelatorios.c"
 #include "..\Main\Entradamanual.c"
 
+
 int main(){
     int resposta;
 
     printf("Bem vindo!\n");
     printf("-------------------------------------------------\n");
-    login();
+    while(login() == 0)
+        printf("");
+        
 
     printf("\n\n---------- TELA INICIAL MERCASANCA 2022 ------------\n");
     printf("Pressione: \n");
