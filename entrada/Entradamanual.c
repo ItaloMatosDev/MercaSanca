@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "..\Itens\CadastroELeituracsv copy.c"
+#include "../Itens/CadastroELeituracsv copy.c"
 
 void gerarEntradas(int qtdEntradas){
   FILE *arquivoEntradas;

@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../Main/Usuarios_mercasanca\cadastroelogin.c"
+#include "../Main/Usuarios_mercasanca/cadastroelogin.c"
 #include "./telaRelatorios.c"
-#include "..\entrada\Entradamanual.c"
+#include "../entrada/Entradamanual.c"
 
 
 int main(){
