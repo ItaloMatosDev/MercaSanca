@@ -126,6 +126,7 @@ void registro_de_vendas(int *quantidadetotal, int *precototal, int *pagamentouti
         int j = 0;
         *quantidadetotal = 0;
         *precototal = 0;
+        float precototalfloat = 0;
         
     while(id != 0){
         for(i = 0; i<count; i++){
@@ -133,6 +134,7 @@ void registro_de_vendas(int *quantidadetotal, int *precototal, int *pagamentouti
                 indice[j] = i;
                 quantidade_produto[i] = quantidade;
                 preco[i] = preco_unitario_lido[i] * quantidade;
+                precototalfloat += preco[i];
                 *precototal += preco[i];
                 *quantidadetotal += quantidade;
                 j++;
@@ -144,6 +146,9 @@ void registro_de_vendas(int *quantidadetotal, int *precototal, int *pagamentouti
         printf("quantidade: ");
         scanf("%d", &quantidade);
     }
+
+    printf("\nRegistrado!\n");
+    printf("O preco total dessa venda foi de R$%.2f\n\n", precototalfloat);
     
     printf("Qual foi o metodo de pagamento?\n");
     printf("Pressione: \n");
