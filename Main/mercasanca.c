@@ -9,8 +9,7 @@
 int main(){
     int resposta;
 
-    printf("Bem vindo!\n");
-    printf("-------------------------------------------------\n");
+    printf("--------------Bem vindo!-----------------\n");
     while(login() == 0)
         printf("");
         
