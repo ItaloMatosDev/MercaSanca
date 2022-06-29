@@ -17,11 +17,17 @@ void opcoes(){
 }
 
 void relatorios(){
-  int caixas = 4, tamanhoEntrada = 100, opcao; //importar o numero maximo de produt e trocar o 100 por ele
+  FILE *arqEntradas;
+  arqEntradas = fopen("../entrada/registrodevendas.txt", "r");
+  int tamanhoEntrada;
+  int a, b, c, d, e, i;
+  while(!feof(arqEntradas)){
+    fscanf(arqEntradas,"%d %d %d %d %d", &i, &b, &c, &d, &e);
+  }
+  tamanhoEntrada = i+1;
   int temposRegistrados[tamanhoEntrada];
 
-  FILE *arqEntradas;
-  arqEntradas = fopen("6EntradasTeste.txt", "r");
+  int caixas = 4, opcao; //importar o numero maximo de produt e trocar o 100 por ele
 
   int id, qntde, preco, tempo, pagamento;
   for (int i = 0; i < tamanhoEntrada; i++){ //trocar por while feof
