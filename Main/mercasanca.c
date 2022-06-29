@@ -23,7 +23,7 @@ int main(){
     printf("0 - sair\n");
     printf("Insira aqui: ");
     scanf("%d", &resposta);
-    printf("----------------------------------------------------\n");
+    printf("-----------------------------------------------------\n");
 
     while(resposta != 0){
         switch(resposta){
