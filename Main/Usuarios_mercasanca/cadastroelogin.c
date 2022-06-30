@@ -16,7 +16,7 @@ void cadastro(){
     }
 
 
-    printf("CADASTRO\n");
+    printf("\n---------- CADASTRO ----------\n");
     printf("Insira o nome: ");
     scanf("%100[^\n]", nomedousuario);
     printf("Insira o email: ");
@@ -57,7 +57,7 @@ int login(){
         i++;
     }
 
-    printf("***LOGIN***\n");
+    printf("\n----------- LOGIN -----------\n");
     printf("Insira seu email: ");
     scanf("%s", emaillogin);
     printf("Insira sua senha: ");
@@ -76,8 +76,6 @@ int x = 0;
 
     if(x==0){
         printf("houve algum erro, confira se seu email e senha estao corretos\n");
-        login();
-        printf("okokok\n");
     }
     fclose(arqlogin);
 
@@ -89,12 +87,12 @@ void teladelogin(){
     int resposta, loginn;
     char temp;
 
-printf("------Bem vindo!------\n");
+printf("\n------ TROCAR DE PERFIL ------\n");
 printf("pressione: \n");
-printf("0 - encerrar\n");
+printf("0 - voltar\n");
 printf("1 - cadastro\n");
 printf("2 - login\n");
-printf("deseja fazer cadastro ou login? ");
+printf("Insira aqui: ");
 scanf("%d", &resposta);
 scanf("%c", &temp);
 
@@ -104,7 +102,12 @@ else if(resposta == 2)
     loginn = login();
 
     while(resposta != 0 && loginn != 1){
-        printf("deseja fazer cadastro ou login? ");
+        printf("\n------ TROCAR DE PERFIL ------\n");
+        printf("pressione: \n");
+        printf("0 - voltar\n");
+        printf("1 - cadastro\n");
+        printf("2 - login\n");
+        printf("Insira aqui: ");
         scanf("%d", &resposta);
         scanf("%c", &temp);
 
@@ -116,48 +119,9 @@ else if(resposta == 2)
     }
 
 }
-
-void loginInicial() {
-    int resposta, loginn;
-    char temp;
-
-printf("------Bem vindo!------\n");
-printf("pressione: \n");
-printf("0 - encerrar\n");
-printf("1 - cadastro\n");
-printf("2 - login\n");
-printf("deseja fazer cadastro ou login? ");
-scanf("%d", &resposta);
-scanf("%c", &temp);
-
-if(resposta == 1)
-    cadastro();
-else if(resposta == 2)
-    loginn = login();
-else    
-    exit(0);
-
-    while(resposta != 0 && loginn != 1){
-        printf("deseja fazer cadastro ou login? ");
-        scanf("%d", &resposta);
-        scanf("%c", &temp);
-
-        if(resposta == 1)
-            cadastro();
-        else if(resposta == 2){
-            loginn = login();
-        }
-    }
-
-}
-
 
 
  /*int main(){
-
-loginInicial();
-
-
 
      return 0;
  }*/

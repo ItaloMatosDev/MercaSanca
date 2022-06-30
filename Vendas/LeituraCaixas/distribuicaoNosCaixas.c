@@ -165,7 +165,7 @@ void distribuiVendasNosCaixas(int temposDeEntrada[], int tamanhoEntrada, int cai
 
 void totalVendasPorCaixa(int tamanho, int caixas) {
   FILE *arqResultado, *arqEntradas;
-  arqEntradas = fopen("6EntradasTeste.txt", "r");
+  arqEntradas = fopen("../entrada/registrodevendas.txt", "r");
   arqResultado = fopen("resultadoDistribuicao.txt", "r");
 
   int entradas[tamanho][5];
@@ -213,7 +213,7 @@ void totalVendasPorCaixa(int tamanho, int caixas) {
 
 void tempoMedioPorCaixa(int tamanho, int caixas){
   FILE *arqResultado, *arqEntradas;
-  arqEntradas = fopen("6EntradasTeste.txt", "r");
+  arqEntradas = fopen("../entrada/registrodevendas.txt", "r");
   arqResultado = fopen("resultadoDistribuicao.txt", "r");
 
   int entradas[tamanho][5];
@@ -261,7 +261,7 @@ void tempoMedioPorCaixa(int tamanho, int caixas){
 
 void vendasPorMetodoDePagamento(int tamanho, int caixas) {
   FILE *arqResultado, *arqEntradas;
-  arqEntradas = fopen("6EntradasTeste.txt", "r");
+  arqEntradas = fopen("../entrada/registrodevendas.txt", "r");
   int entradas[tamanho][5];
   int resultados[tamanho][caixas];
 
@@ -283,15 +283,15 @@ void vendasPorMetodoDePagamento(int tamanho, int caixas) {
     metodosPagamentos[indiceMetodo] += 1;
   }
   printf("\n\nTotal de vendas efetuadas de acordo com o metodo de pagamento:");
-  printf("\nPix: %d", metodosPagamentos[0]);
-  printf("\nDebito: %d", metodosPagamentos[1]);
-  printf("\nCredito: %d", metodosPagamentos[2]);
-  printf("\nDinheiro: %d", metodosPagamentos[3]);
+  printf("\nPix: %d\n", metodosPagamentos[0]);
+  printf("\nDebito: %d\n", metodosPagamentos[1]);
+  printf("\nCredito: %d\n", metodosPagamentos[2]);
+  printf("\nDinheiro: %d\n", metodosPagamentos[3]);
 }
 
 void metodoPagamentoMaisUtilizado(int tamanho, int caixas){
   FILE *arqResultado, *arqEntradas;
-  arqEntradas = fopen("6EntradasTeste.txt", "r");
+  arqEntradas = fopen("../entrada/registrodevendas.txt", "r");
   int entradas[tamanho][5];
   int resultados[tamanho][caixas];
 
@@ -327,19 +327,19 @@ void metodoPagamentoMaisUtilizado(int tamanho, int caixas){
       switch (i)
       {
       case 0:
-        printf("\nPix: %d", totalPagamentos[i]);
+        printf("\nPix: %d\n\n", totalPagamentos[i]);
         break;
 
       case 1:
-        printf("\nDebito: %d", totalPagamentos[i]);
+        printf("\nDebito: %d\n\n", totalPagamentos[i]);
         break;
 
       case 2:
-        printf("\nCredito: %d", totalPagamentos[i]);
+        printf("\nCredito: %d\n\n", totalPagamentos[i]);
         break;
 
       case 3:
-        printf("\nDinheiro: %d", totalPagamentos[i]);
+        printf("\nDinheiro: %d\n\n", totalPagamentos[i]);
         break;
       default:
         break;
