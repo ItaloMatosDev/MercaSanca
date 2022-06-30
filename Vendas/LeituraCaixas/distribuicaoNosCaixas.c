@@ -165,7 +165,7 @@ void distribuiVendasNosCaixas(int temposDeEntrada[], int tamanhoEntrada, int cai
 
 void totalVendasPorCaixa(int tamanho, int caixas) {
   FILE *arqResultado, *arqEntradas;
-  arqEntradas = fopen("6EntradasTeste.txt", "r");
+  arqEntradas = fopen("../entrada/registrodevendas.txt", "r");
   arqResultado = fopen("resultadoDistribuicao.txt", "r");
 
   int entradas[tamanho][5];
@@ -213,7 +213,7 @@ void totalVendasPorCaixa(int tamanho, int caixas) {
 
 void tempoMedioPorCaixa(int tamanho, int caixas){
   FILE *arqResultado, *arqEntradas;
-  arqEntradas = fopen("6EntradasTeste.txt", "r");
+  arqEntradas = fopen("../entrada/registrodevendas.txt", "r");
   arqResultado = fopen("resultadoDistribuicao.txt", "r");
 
   int entradas[tamanho][5];
@@ -291,7 +291,7 @@ void vendasPorMetodoDePagamento(int tamanho, int caixas) {
 
 void metodoPagamentoMaisUtilizado(int tamanho, int caixas){
   FILE *arqResultado, *arqEntradas;
-  arqEntradas = fopen("6EntradasTeste.txt", "r");
+  arqEntradas = fopen("../entrada/registrodevendas.txt", "r");
   int entradas[tamanho][5];
   int resultados[tamanho][caixas];
 
